@@ -1,6 +1,6 @@
 .venv/
 .env
-tarot.db
+data/tarot.db
 .idea/
 cards/
 __pycache__/
