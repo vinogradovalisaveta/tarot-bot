@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "tarot-bot"
+version = "0.1.0"
+description = ""
+authors = ["Lisaveta Yurashevich <vinogradova.lisaveta@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+aiogram = "^3.13.1"
+python-dotenv = "^1.0.1"
+sqlalchemy = "^2.0.35"
+aiosqlite = "^0.20.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.8.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
