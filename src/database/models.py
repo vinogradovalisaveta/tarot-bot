@@ -17,7 +17,7 @@ class Card(Base):
         "CardValue", backref="card", cascade="all"
     )
 
-    # users: Mapped[List['User']] = relationship('User', back_populates='card')
+    users: Mapped[List["User"]] = relationship("User", back_populates="card")
 
 
 class Theme(Base):
@@ -40,12 +40,12 @@ class CardValue(Base):
     description: Mapped[str] = mapped_column(String, nullable=False)
 
 
-# class User(Base):
-#     __tablename__ = 'users'
-#
-#     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-#     telegram_id: Mapped[int] = mapped_column(BigInteger)
-#     card_id: Mapped[int] = mapped_column(Integer, ForeignKey('cards.id'))
-#     date: Mapped[Date] = mapped_column(Date, onupdate=func.now())
-#
-#     card: Mapped['Card'] = relationship('Card', back_populates='users')
+class User(Base):
+    __tablename__ = "users"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    telegram_id: Mapped[int] = mapped_column(BigInteger, unique=True, index=True)
+    card_id: Mapped[int] = mapped_column(Integer, ForeignKey("cards.id"), nullable=True)
+    date: Mapped[Date] = mapped_column(Date, default=func.date(func.now()))
+
+    card: Mapped["Card"] = relationship("Card", back_populates="users")

@@ -3,3 +3,4 @@
 tarot.db
 .idea/
 cards/
+__pycache__/
